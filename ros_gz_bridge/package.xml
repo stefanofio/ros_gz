@@ -16,6 +16,7 @@
   <depend>actuator_msgs</depend>
   <depend>geometry_msgs</depend>
   <depend>gps_msgs</depend>
+  <depend>move_common_msgs</depend>
   <depend>nav_msgs</depend>
   <depend>rclcpp</depend>
   <depend>rclcpp_components</depend>
@@ -24,6 +25,7 @@
   <depend>sensor_msgs</depend>
   <depend>std_msgs</depend>
   <depend>tf2_msgs</depend>
+  <depend>tkSimMsgs</depend>
   <depend>trajectory_msgs</depend>
   <depend>yaml_cpp_vendor</depend>
   <depend>vision_msgs</depend>

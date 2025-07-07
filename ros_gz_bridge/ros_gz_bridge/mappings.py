@@ -115,6 +115,10 @@ MAPPINGS = {
         Mapping('Detection3DArray', 'AnnotatedOriented3DBox_V'),
         Mapping('Detection3D', 'AnnotatedOriented3DBox'),
     ],
+    'move_common_msgs': [
+        Mapping('VehicleFeedback', 'tk::sim_msgs::CarState'),
+        Mapping('VehicleControl', 'tk::sim_msgs::CarControl'),
+    ],
 }
 
 MAPPINGS_8_4_0 = {

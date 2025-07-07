@@ -42,18 +42,35 @@ class MessageMapping:
 
     def ign_type(self):
         # Return GZ type of a message (eg gz::msgs::Bool)
-        return f'gz::msgs::{self.gz_message_name}'
+        # Handle custom namespaces (like tk::sim_msgs::CarState)
+        if '::' in self.gz_message_name:
+            return self.gz_message_name
+        else:
+            return f'gz::msgs::{self.gz_message_name}'
 
     def gz_string(self):
         # Return GZ string version of a message (eg ignition.msgs.Bool)
-        return f'gz.msgs.{self.gz_message_name}'
+        # Handle custom namespaces (like tk::sim_msgs::CarState)
+        if '::' in self.gz_message_name:
+            # Convert C++ namespace format to dot notation
+            # e.g., "tk::sim_msgs::CarState" -> "tk.sim_msgs.CarState"
+            return self.gz_message_name.replace('::', '.')
+        else:
+            return f'gz.msgs.{self.gz_message_name}'
 
     def gz_type(self):
         # Return GZ type of a message (eg gz::msgs::Bool)
-        return f'gz::msgs::{self.gz_message_name}'
+        # Handle custom namespaces (like tk::sim_msgs::CarState)
+        if '::' in self.gz_message_name:
+            return self.gz_message_name
+        else:
+            return f'gz::msgs::{self.gz_message_name}'
 
     def unique(self):
-        return f'{self.gz_message_name.lower()}_{self.ros2_message_name.lower()}'
+        # Extract just the message name from the full namespace for variable naming
+        # e.g., "tk::sim_msgs::CarState" becomes "carstate"
+        gz_name_only = self.gz_message_name.split('::')[-1].lower()
+        return f'{gz_name_only}_{self.ros2_message_name.lower()}'
 
 
 def mappings(gz_msgs_ver):
